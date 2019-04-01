@@ -3,7 +3,7 @@
 {% 
     block head 
 %}
-<title>Register</title>
+<title>{{title}}</title>
 <link rel="stylesheet" type="text/css" href="/static/main.css">
 
 {%  
@@ -56,4 +56,8 @@
         Don't Have An Account? <a class="ml-2" href="{{ url_for('Register') }}">Sign Up</a>
     </small>
 </div>
+
+    <small class="text-muted">
+       Forgot Password ?<a class="ml-2" href="{{ url_for('reset') }}">Reset Password</a>
+    </small>
 {%  endblock content %}

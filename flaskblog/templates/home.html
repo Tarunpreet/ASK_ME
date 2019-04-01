@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block head %}
+<title>ASK ME</title>
+<link rel="stylesheet" type="text/css" href="/static/main.css">
+{%  endblock head %}
+
+{% block content %}
+
+{% for question in questions %}
+
+<article class="media content-section">
+
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-3" href="#">{{question.to_dict().get('author')}}</a>
+            <small class="text-muted">{{ question.to_dict().get('date_posted').strftime('%Y-%m-%d') }}</small>
+          </div>
+          <h2><a class="article-title" href="{{ url_for('post', post_id=question.id) }}">{{ question.get('title') }}</a></h2>
+          <div class="article-metadata"></div>
+
+          <!-- <a class="mr-3" href="#">{{question.id}}</a> -->
+        </div>
+      </article>
+      {%  endfor %}
+
+{%  endblock content %}
