@@ -50,13 +50,5 @@ from firebase_admin import auth
 db = firestore.client()
 
 
-bcrypt=Bcrypt(app)
-login_manager=LoginManager(app)
-login_manager.login_view = 'login'
-# function name of route for login_req
-login_manager.login_message_category = 'info'
-# function name of route for login_req
-
-
 from flaskblog import routes
 

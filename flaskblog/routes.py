@@ -1,9 +1,8 @@
 from flask import render_template, url_for, flash, redirect,request,session
-from flaskblog import app,bcrypt,auth1,db
+from flaskblog import app,auth1,db
 from flaskblog.forms import RegistrationForm, LoginForm,UpdateAccountForm,PostForm,AddQuest,ResetForm
 from firebase_admin import auth
 from firebase_admin import firestore
-from flask_login import login_user,current_user,logout_user,login_required
 import pyrebase
 import datetime
 
