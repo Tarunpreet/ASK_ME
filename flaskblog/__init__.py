@@ -2,7 +2,6 @@
 from flask import Flask,flash,url_for
 from flask_cors import CORS, cross_origin
 from flask import render_template,redirect
-from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 import firebase_admin
 from firebase_admin import credentials
