@@ -57,12 +57,22 @@ class PostForm(FlaskForm):
 
     title= StringField('Title', validators=[DataRequired()])
     content=TextAreaField('Content',validators=[DataRequired()])
+    tag1=StringField('Tag 1')
+    tag2=StringField('Tag 2')
+    tag3=StringField('Tag 3')
+    submit=SubmitField('Add Question')
+    submit2=SubmitField('Predict')
+
+class OnlyPostForm(FlaskForm):
+
+    title= StringField('Title', validators=[DataRequired()])
+    content=TextAreaField('Content',validators=[DataRequired()])
     tag1=StringField('Tag 1', validators=[DataRequired()])
     tag2=StringField('Tag 2')
     tag3=StringField('Tag 3')
-    submit=SubmitField('ADD QUESTION')
+    submit=SubmitField('Add Question')
 
-class AddQuest(FlaskForm):
+class AddAnswer(FlaskForm):
 
     content=TextAreaField('Content',validators=[DataRequired()])
     submit=SubmitField('ADD ANSWER')

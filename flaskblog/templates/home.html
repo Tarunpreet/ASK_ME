@@ -12,15 +12,39 @@
 
         <div class="media-body">
           <div class="article-metadata">
-            <a class="mr-3" href="#">{{question.to_dict().get('author')}}</a>
-            <small class="text-muted">{{ question.to_dict().get('date_posted').strftime('%Y-%m-%d') }}</small>
+            <a class="mr-3" href="#">{{question.get('author')}}</a>
+            <small class="text-muted">{{ question.get('date_posted').strftime('%Y-%m-%d') }}</small>
           </div>
           <h2><a class="article-title" href="{{ url_for('post', post_id=question.id) }}">{{ question.get('title') }}</a></h2>
           <div class="article-metadata"></div>
-
+          {% for tag in question.get('tags') %}
+         <a class="mr-3" href="#">{{tag}}</a>
+         {%  endfor %}
           <!-- <a class="mr-3" href="#">{{question.id}}</a> -->
         </div>
       </article>
       {%  endfor %}
-
+      
+      {% if current_page != total_pages %}
+        {% if current_page==1 %}
+          <a class="btn btn-info mb-4" href="{{ url_for('hello1', pageNo=current_page) }}">{{ current_page }}</a>
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('hello1', pageNo=current_page+1) }}">{{ current_page+1 }}</a>
+          {% if current_page+1 != total_pages %}
+            <a href="#">.....</a>
+            <a class="btn btn-outline-info mb-4" href="{{ url_for('hello1', pageNo=total_pages) }}">{{ total_pages }}</a>
+          {%endif%}
+        {%else%}
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('hello1', pageNo=current_page-1) }}">{{ current_page-1 }}</a>
+          <a class="btn btn-info mb-4" href="{{ url_for('hello1', pageNo=current_page) }}">{{ current_page }}</a>
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('hello1', pageNo=current_page+1) }}">{{ current_page+1 }}</a>
+          {% if current_page+1 != total_pages %}
+            <a href="#">......</a>
+            <a class="btn btn-outline-info mb-4" href="{{ url_for('hello1', pageNo=total_pages) }}">{{ total_pages }}</a>
+          {%endif%}
+        {%endif%}
+      {%else%}
+        <a class="btn btn-outline-info mb-4" href="{{ url_for('hello1', pageNo=1) }}">{{ 1 }}</a>
+        <a href="#">.....</a>
+        <a class="btn btn-info mb-4" href="{{ url_for('hello1', pageNo=current_page) }}">{{ current_page }}</a>
+      {%endif%}
 {%  endblock content %}

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="/static/main.css">
-<script src="/static/predict.js"></script>
+
 {%  endblock head %}
 {% block content %}
 <div class="content-section">
@@ -77,9 +77,6 @@
         </fieldset>
         <div class="form-group">
             {{ form.submit(class="btn btn-outline-info") }}
-        </div>
-        <div class="form-group">
-            {{ form.submit2(class="btn btn-outline-info") }}
         </div>
     </form>
    

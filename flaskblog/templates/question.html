@@ -20,20 +20,30 @@
           <br>
           <p class="article-content">{{ question.get('content') }}</p><br>
           <div class="article-metadata"></div>
+          {% for tag in question.get('tags') %}
+         <a class="mr-3" href="#">{{tag}}</a>
+         {%  endfor %}
          <a href="{{url_for('add_answer', post_id=question.id)}}" class="btn btn-outline-info" style="margin-left:60%">Add Answer</a>
         </div>
- </article>
+ </article>-
  <h2>Answers</h2>
+ {% set room_count = [] %}
  <div class="article-metadata"></div>
  {% for answer in answers %}
- 
+ {% if room_count.append(1) %}{% endif %}
 <article class="media content-section">
 <div class="media-body">
 <div class="article-metadata">
 <a class="mr-2" href="#">{{ answer.get('author') }}</a>
 <small class="text-muted">{{ answer.get('date_posted').strftime('%Y-%m-%d') }}</small>
+{% if answer.get('author_id') == author_id %}
+<form action="{{ url_for('delete_answer', post_id=question.id,index=((room_count|length))-1)}}" method="POST">
+    <input class="btn btn-danger" type="submit" value="Delete">
+</form>
+{% endif %}
 </div><br>
 <p class="article-content">{{ answer.get('content') }}</p>
+<a class="mr-2" href="#">{{room_count|length }}</a>
 </div>
 </article>
 {%else%}
@@ -60,5 +70,6 @@
           </div>
         </div>
       </div>
+  
 
 {%  endblock content %}
